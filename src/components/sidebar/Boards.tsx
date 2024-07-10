@@ -1,11 +1,20 @@
+'use client'
+
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import { Board } from '@prisma/client'
+import { usePathname } from 'next/navigation'
 
-const boards = ['Platform Launch', 'Marketing Plan', 'Roadmap']
+type BoardsProps = {
+  boards: Board[]
+}
 
-export default function Boards() {
+export default function Boards({ boards }: BoardsProps) {
+  const path = usePathname()
+  const boardId = path.split('/').pop()
+
   return (
     <section className='text-nowrap '>
       <h2 className='ml-6 uppercase text-sm tracking-widest text-muted'>
@@ -13,26 +22,30 @@ export default function Boards() {
       </h2>
 
       <ul className='text-muted text-md mt-5'>
-        {boards.map((board, i) => (
-          <li key={board}>
-            <Link
-              href={`/boards/${board}`}
-              className={cn(
-                'pl-6  py-3 flex gap-4 items-center mr-6 rounded-r-full',
-                { 'bg-primary text-white': i === 0 }
-              )}
-            >
-              <Image
-                src='/assets/icon-board.svg'
-                alt='board icon'
-                width={16}
-                height={16}
-                className={cn({ 'brightness-0 saturate-100 invert': i === 0 })}
-              />
-              {board}
-            </Link>
-          </li>
-        ))}
+        {boards.map((board, i) => {
+          return (
+            <li key={board.id}>
+              <Link
+                href={`/boards/${board.id}`}
+                className={cn(
+                  'pl-6  py-3 flex gap-4 items-center mr-6 rounded-r-full',
+                  { 'bg-primary text-white': board.id === boardId }
+                )}
+              >
+                <Image
+                  src='/assets/icon-board.svg'
+                  alt='board icon'
+                  width={16}
+                  height={16}
+                  className={cn({
+                    'brightness-0 saturate-100 invert': board.id === boardId,
+                  })}
+                />
+                {board.name}
+              </Link>
+            </li>
+          )
+        })}
         <li>
           <Button
             className='pl-6 flex text-md gap-4 text-primary capitalize'

@@ -6,8 +6,15 @@ import Theme from '@/components/sidebar/Theme'
 import { cn } from '@/lib/utils'
 import { useSidebarStore } from '@/stores/sidebarStore'
 import Image from 'next/image'
+import { Board } from '@prisma/client'
 
-export default function Sidebar() {
+import { useEffect } from 'react'
+
+type SidebarProps = {
+  boards: Board[]
+}
+
+export default function Sidebar({ boards }: SidebarProps) {
   const isOpen = useSidebarStore((state) => state.isOpen)
   const setIsOpen = useSidebarStore((state) => state.setIsOpen)
 
@@ -23,7 +30,7 @@ export default function Sidebar() {
           }
         )}
       >
-        <Boards />
+        <Boards boards={boards} />
 
         <div className='mb-8 flex flex-col gap-2 relative'>
           <Theme />

@@ -10,21 +10,28 @@ import {
 } from '@/components/ui/navigation-menu'
 import Boards from './sidebar/Boards'
 import Theme from './sidebar/Theme'
+import { Board } from '@prisma/client'
+import BoardTitle from './BoardTitle'
 
-export default function Header() {
+type HeaderProps = {
+  boards: Board[]
+}
+
+export default function Header({ boards }: HeaderProps) {
   return (
     <header className='flex flex-1 justify-between items-center  py-6 px-3 md:p-6  border-b-2 border-border '>
-      <h1 className='hidden sm:block text-xl md:text-2xl font-semibold'>
-        Platform Launch
-      </h1>
+      <BoardTitle
+        boards={boards}
+        className='hidden sm:block text-xl md:text-2xl font-semibold'
+      />
       <NavigationMenu className='sm:hidden '>
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className='text-xl px-2'>
-              Platform Launch
+              <BoardTitle boards={boards} />
             </NavigationMenuTrigger>
             <NavigationMenuContent className='py-4 w-[270px]'>
-              <Boards />
+              <Boards boards={boards} />
               <Theme />
             </NavigationMenuContent>
           </NavigationMenuItem>
