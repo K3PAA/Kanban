@@ -1,3 +1,3 @@
 export default function Home() {
-  return <main className='flex-1 border-2 border-red-500'> Conent </main>
+  return <main className='flex-1 transition-all duration-1000 '> Conent </main>
 }
