@@ -7,7 +7,7 @@ const boards = ['Platform Launch', 'Marketing Plan', 'Roadmap']
 
 export default function Boards() {
   return (
-    <section className='text-nowrap'>
+    <section className='text-nowrap '>
       <h2 className='ml-6 uppercase text-sm tracking-widest text-muted'>
         All Boards ( 3 ){' '}
       </h2>

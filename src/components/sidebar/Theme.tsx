@@ -3,7 +3,10 @@ import Image from 'next/image'
 
 export default function Theme() {
   return (
-    <Button variant='secondary' className='mx-6 flex items-center gap-6'>
+    <Button
+      variant='secondary'
+      className='mx-auto sm:mx-6 flex items-center gap-6 w-[90%] sm:w-auto mt-4 sm:mt-0'
+    >
       <Image
         src='/assets/icon-light-theme.svg'
         alt='sun'

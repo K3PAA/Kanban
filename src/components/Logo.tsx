@@ -10,7 +10,7 @@ export default function Logo() {
   return (
     <div
       className={cn(
-        'px-4 sm:px-8  h-full sm:border-r-2 flex items-center  border-border transition-all duration-300',
+        'pl-3 sm:px-8  h-full sm:border-r-2 flex items-center  border-border transition-all duration-300',
         {
           'sm:basis-[260px] border-b-2 sm:border-b-0 md:basis-[300px] ': isOpen,
           'sm:basis-[220px] border-b-2': !isOpen,
