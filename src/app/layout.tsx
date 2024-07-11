@@ -28,7 +28,7 @@ export default async function RootLayout({
             <Logo />
             <Header boards={boards} />
           </div>
-          <div className='flex h-full'>
+          <div className='flex h-full overflow-auto'>
             <Sidebar boards={boards} />
             {children}
           </div>

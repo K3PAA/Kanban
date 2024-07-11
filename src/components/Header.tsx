@@ -1,6 +1,3 @@
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
-
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,6 +9,7 @@ import Boards from './sidebar/Boards'
 import Theme from './sidebar/Theme'
 import { Board } from '@prisma/client'
 import BoardTitle from './BoardTitle'
+import InteractiveHeaderButtons from './InteractiveHeaderButtons'
 
 type HeaderProps = {
   boards: Board[]
@@ -38,26 +36,7 @@ export default function Header({ boards }: HeaderProps) {
         </NavigationMenuList>
       </NavigationMenu>
 
-      <div className=''>
-        <Button>
-          <Image
-            src='/assets/icon-add-task-mobile.svg'
-            alt='logo'
-            width={12}
-            height={12}
-            className='sm:hidden'
-          />
-          <span className='hidden sm:block'>+ Add new task</span>
-        </Button>
-        <Button variant='ghost' size='icon'>
-          <Image
-            src='/assets/icon-vertical-ellipsis.svg'
-            alt=''
-            width={5}
-            height={20}
-          />
-        </Button>
-      </div>
+      <InteractiveHeaderButtons />
     </header>
   )
 }

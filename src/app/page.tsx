@@ -1,9 +1,6 @@
 import { Button } from '@/components/ui/button'
-import prisma from '@/lib/db'
 
 export default async function Home() {
-  const boards = await prisma.board.findMany()
-
   return (
     <main className='flex-1 transition-all duration-1000 flex flex-col gap-4 items-center justify-center'>
       <h2 className='text-4xl font-semibold'>No board selected</h2>
