@@ -17,7 +17,7 @@ type HeaderProps = {
 
 export default function Header({ boards }: HeaderProps) {
   return (
-    <header className='flex flex-1 justify-between items-center  py-6 px-3 md:p-6  border-b-2 border-border '>
+    <header className='flex flex-1 justify-between items-center  py-6 px-3 md:p-6  border-b border-border '>
       <BoardTitle
         boards={boards}
         className='hidden sm:block text-xl md:text-2xl font-semibold'

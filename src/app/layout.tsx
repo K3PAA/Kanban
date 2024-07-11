@@ -5,6 +5,7 @@ import Sidebar from '@/components/Sidebar'
 import Header from '@/components/Header'
 import Logo from '@/components/Logo'
 import prisma from '@/lib/db'
+import { ThemeProvider } from 'next-themes'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,18 +22,25 @@ export default async function RootLayout({
   const boards = await prisma.board.findMany()
 
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body className={inter.className}>
-        <div className='flex flex-col h-screen'>
-          <div className='flex bg-card'>
-            <Logo />
-            <Header boards={boards} />
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className='flex flex-col h-screen'>
+            <div className='flex bg-card'>
+              <Logo />
+              <Header boards={boards} />
+            </div>
+            <div className='flex h-full overflow-auto'>
+              <Sidebar boards={boards} />
+              {children}
+            </div>
           </div>
-          <div className='flex h-full overflow-auto'>
-            <Sidebar boards={boards} />
-            {children}
-          </div>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -8,8 +8,6 @@ import { useSidebarStore } from '@/stores/sidebarStore'
 import Image from 'next/image'
 import { Board } from '@prisma/client'
 
-import { useEffect } from 'react'
-
 type SidebarProps = {
   boards: Board[]
 }
@@ -22,7 +20,7 @@ export default function Sidebar({ boards }: SidebarProps) {
     <>
       <aside
         className={cn(
-          'bg-card  border-r-2 hidden sm:flex flex-col justify-between transition-all duration-300 ',
+          'bg-card  border-r hidden sm:flex flex-col justify-between transition-all duration-300 ',
           {
             'basis-[260px] md:basis-[300px]': isOpen,
             'basis-[0px]  overflow-hidden opacity-0 pointer-events-none':
@@ -36,7 +34,7 @@ export default function Sidebar({ boards }: SidebarProps) {
           <Theme />
 
           <Button
-            className='mr-6 pl-6 gap-4 justify-start'
+            className='mr-6 pl-6 gap-4 justify-start text-muted'
             variant='ghost'
             onClick={() => setIsOpen(false)}
           >

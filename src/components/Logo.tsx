@@ -10,10 +10,10 @@ export default function Logo() {
   return (
     <div
       className={cn(
-        'pl-3 sm:px-8  h-full sm:border-r-2 flex items-center  border-border transition-all duration-300',
+        'pl-3 sm:px-8  h-full sm:border-r flex items-center  border-border transition-all duration-100',
         {
-          'sm:basis-[260px] border-b-2 sm:border-b-0 md:basis-[300px] ': isOpen,
-          'sm:basis-[220px] border-b-2': !isOpen,
+          'sm:basis-[260px] border-b sm:border-b-0 md:basis-[300px] ': isOpen,
+          'sm:basis-[220px] border-b': !isOpen,
         }
       )}
     >
@@ -22,8 +22,17 @@ export default function Logo() {
         alt='logo'
         width={153}
         height={26}
-        className='hidden sm:block'
+        className='hidden sm:block dark:sm:hidden'
       />
+
+      <Image
+        src='/assets/logo-light.svg'
+        alt='logo'
+        width={153}
+        height={26}
+        className='hidden  dark:sm:block'
+      />
+
       <Image
         src='/assets/logo-mobile.svg'
         alt='logo'

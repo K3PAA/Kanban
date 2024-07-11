@@ -36,10 +36,13 @@ export default async function Board({ params }: BoardProps) {
   }
 
   return (
-    <main className='flex-1 flex px-6 gap-6  overflow-auto'>
+    <main className='flex-1 flex px-6 gap-6 overflow-auto'>
       {board.columns.map((column, i) => {
         return (
-          <section key={column.id} className='min-w-[300px] flex-1 py-6'>
+          <section
+            key={column.id}
+            className='min-w-[250px] sm:min-w-[300px] flex-1 py-6'
+          >
             <h2
               className={cn(
                 "ml-6 uppercase tracking-widest text-sm tex t-muted relative after:content-[''] after:w-3 after:h-3 after:absolute after:rounded-full after:top-1/2 after:-left-4 after:-translate-y-1/2",
@@ -54,7 +57,7 @@ export default async function Board({ params }: BoardProps) {
         )
       })}
       <Button
-        className='my-20 h-auto min-w-[240px]  border-2 text-2xl'
+        className='my-20 h-auto min-w-[200px] sm:min-w-[240px] text-2xl bg-card/60 hover:bg-card-90 focus:bg-card-90'
         variant='secondary'
       >
         + New Column

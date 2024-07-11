@@ -28,8 +28,11 @@ export default function Boards({ boards }: BoardsProps) {
               <Link
                 href={`/boards/${board.id}`}
                 className={cn(
-                  'pl-6  py-3 flex gap-4 items-center mr-6 rounded-r-full',
-                  { 'bg-primary text-white': board.id === boardId }
+                  'group pl-6  py-3 flex gap-4 items-center mr-6 rounded-r-full hover:bg-primary/70 hover:text-white transition duration-300 ',
+                  {
+                    'bg-primary text-white hover:bg-primary':
+                      board.id === boardId,
+                  }
                 )}
               >
                 <Image
@@ -37,9 +40,12 @@ export default function Boards({ boards }: BoardsProps) {
                   alt='board icon'
                   width={16}
                   height={16}
-                  className={cn({
-                    'brightness-0 saturate-100 invert': board.id === boardId,
-                  })}
+                  className={cn(
+                    'group-hover:brightness-0 group-hover:saturate-100 group-hover:invert transition duration-300',
+                    {
+                      'brightness-0 saturate-100 invert': board.id === boardId,
+                    }
+                  )}
                 />
                 {board.name}
               </Link>
@@ -48,15 +54,15 @@ export default function Boards({ boards }: BoardsProps) {
         })}
         <li>
           <Button
-            className='pl-6 flex text-md gap-4 text-primary capitalize'
+            className='pl-6 flex text-md gap-4 text-primary capitalize hover:bg-background rounded-r-full '
             variant='ghost'
+            size='lg'
           >
             <Image
-              src='/assets/icon-board.svg'
+              src='/assets/icon-board-purple.svg'
               alt='board icon'
               width={16}
               height={16}
-              className='brightness-0 saturate-100 invert'
             />
             + Create new Board
           </Button>
